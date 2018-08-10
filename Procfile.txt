@@ -1,1 +1,1 @@
-web: gunicorn django_notes/wsgi.py --log-file -
+web: gunicorn django_notes.wsgi --log-file -
