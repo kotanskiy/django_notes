@@ -23,10 +23,11 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'dip6cwqdc(12*@4=tm8^tdau2($=)-$wsty4m(qcq0&q#d(lot'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = [
     'localhost',
+    'shrouded-meadow-42543.herokuapp.com',
 ]
 
 
