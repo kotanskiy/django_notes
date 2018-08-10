@@ -87,11 +87,12 @@ WSGI_APPLICATION = 'django_notes.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'django_notes',
-        'USER': 'root',
-        'PASSWORD': '12345678',
-        'HOST': 'localhost',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'dc4ep6mkvnafo4',
+        'USER': 'bgiljdrgvzkkyd',
+        'PASSWORD': '73cd4370ad5961207d366c62a0306b715edc87e1a82e089de32aff3cf9e5a6e0',
+        'HOST': 'ec2-54-83-13-119.compute-1.amazonaws.com',
+        'PORT': '5432',
     }
 }
 
@@ -133,3 +134,8 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
 
 STATIC_URL = '/static/'
+
+try:
+    from django_notes.local_settings import *
+except ImportError:
+    pass
