@@ -24,3 +24,4 @@ class NoteList(generics.ListCreateAPIView):
         return sorted(notes, key=lambda note: count_of_unique_words(note.description))
 
 
+
