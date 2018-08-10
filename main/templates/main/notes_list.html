@@ -19,7 +19,6 @@
                         <th scope="col">#</th>
                         <th scope="col">Название</th>
                         <th scope="col">Описание</th>
-                        <th scope="col">Дата создания</th>
                     </tr>
                     </thead>
                     <tbody id="listOfNotes">
@@ -37,7 +36,7 @@
             $.getJSON('/api/note', {}, function (data) {
                 for (i = 0; i < data.length; i++){
                     $('#listOfNotes').append("<tr><td>" + data[i].id + "</td><td>"
-                        + data[i].name + "</td><td>" + data[i].description + "</td><td>" + data[i].create_date + "</td></tr>" );
+                        + data[i].name + "</td><td>" + data[i].description + "</td></tr>" );
                 }
             });
         }
