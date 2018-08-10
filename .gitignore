@@ -1,0 +1,6 @@
+.idea
+*.pyc
+*.log
+venv
+__pycache__
+main/migrations

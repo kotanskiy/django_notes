@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+{% block content %}
+    <div class="container">
+        <br>
+        <div class="row">
+            <div class="col-5">
+                <form id="noteForm">
+                    {{ form }}
+                    <br>
+                    <button class="btn btn-primary" id="submitNote">Добавить</button>
+                </form>
+            </div>
+        </div><br>
+        <div class="row">
+            <div class="col">
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Название</th>
+                        <th scope="col">Описание</th>
+                    </tr>
+                    </thead>
+                    <tbody id="listOfNotes">
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block js %}
+    <script type="text/javascript">
+        function getAllNotes() {
+            $('#listOfNotes').html('');
+            $.getJSON('/api/note', {}, function (data) {
+                for (i = 0; i < data.length; i++){
+                    $('#listOfNotes').append("<tr><td>" + data[i].id + "</td><td>" + data[i].name + "</td><td>" + data[i].description + "</td></tr>" );
+                }
+            });
+        }
+
+        function getFormData($form){
+            var unindexed_array = $form.serializeArray();
+            var indexed_array = {};
+
+            $.map(unindexed_array, function(n, i){
+                indexed_array[n['name']] = n['value'];
+            });
+
+            return indexed_array;
+        }
+
+        $(document).ready(function () {
+            getAllNotes();
+            $('#submitNote').click(function () {
+                event.preventDefault();
+                var noteJson = getFormData($('#noteForm'));
+                console.log(noteJson);
+                $.post('/api/note', noteJson);
+                getAllNotes();
+            });
+        });
+    </script>
+{% endblock %}
