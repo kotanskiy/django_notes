@@ -13,6 +13,7 @@ class IndexView(TemplateView):
         form = NoteForm()
         context = super().get_context_data(**kwargs)
         context['form'] = form
+        context['title'] = 'Заметки'
         return context
 
 
