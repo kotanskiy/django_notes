@@ -1,6 +1,6 @@
 from rest_framework import serializers
 
-from main.models import Note
+from api.models import Note
 
 
 class NoteSerializer(serializers.ModelSerializer):
@@ -9,4 +9,3 @@ class NoteSerializer(serializers.ModelSerializer):
         fields = ('id', 'name', 'description', 'created')
 
     created = serializers.DateTimeField(format='%d.%m %H:%M', read_only=True)
-

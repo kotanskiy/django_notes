@@ -1,6 +1,6 @@
 from django.forms import ModelForm
 
-from main.models import Note
+from api.models import Note
 
 
 class NoteForm(ModelForm):
