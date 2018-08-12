@@ -35,7 +35,7 @@
         function getAllNotes() {
             $('#listOfNotes').html('');
             $.getJSON('/api/note', {}, function (data) {
-                for (i = 0; i < data.length; i++){
+                for (let i = 0; i < data.length; i++){
                     $('#listOfNotes').append("<tr><td>" + data[i].id + "</td><td>"
                         + data[i].name + "</td><td>" + data[i].description + "</td><td>" + data[i].created + "</td></tr>");
                 }
@@ -43,8 +43,8 @@
         }
 
         function getFormData($form){
-            var unindexed_array = $form.serializeArray();
-            var indexed_array = {};
+            let unindexed_array = $form.serializeArray();
+            let indexed_array = {};
 
             $.map(unindexed_array, function(n, i){
                 indexed_array[n['name']] = n['value'];
@@ -57,10 +57,11 @@
             getAllNotes();
             $('#submitNote').click(function () {
                 event.preventDefault();
-                var noteJson = getFormData($('#noteForm'));
+                let noteJson = getFormData($('#noteForm'));
                 console.log(noteJson);
-                $.post('/api/note', noteJson);
-                getAllNotes();
+                $.post('/api/note', noteJson, function (data) {
+                    getAllNotes();
+                });
             });
         });
     </script>
